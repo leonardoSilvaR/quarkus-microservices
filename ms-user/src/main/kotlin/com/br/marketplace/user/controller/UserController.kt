@@ -6,22 +6,24 @@ import jakarta.inject.Inject
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
+import java.net.URI
+import java.util.UUID
 
 @Path("/v1/users")
 class UserController(
-        @Inject
-        private val userService: UserService
+    @Inject
+    private val userService: UserService
 ) {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     fun create(
-            userRequest: UserRequest
-
+        userRequest: UserRequest
     ): Response {
         return Response
-                .ok()
-                .build()
+            .created(URI.create("/users/${UUID.randomUUID()}"))
+            .build()
     }
 
     @GET
