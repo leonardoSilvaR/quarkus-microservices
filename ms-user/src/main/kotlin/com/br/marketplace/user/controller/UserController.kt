@@ -7,7 +7,7 @@ import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
 import java.net.URI
-import java.util.UUID
+import java.util.*
 
 @Path("/v1/users")
 class UserController(
